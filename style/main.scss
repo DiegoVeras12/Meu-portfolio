@@ -1,0 +1,134 @@
+// Importações
+@import 'variables';
+@import 'mixins';
+@import 'header';
+@import 'hero';
+@import 'about';
+@import 'projects';
+@import 'contact';
+@import 'footer';
+
+// Estilos globais
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: $font-family;
+    line-height: 1.6;
+    color: $text-color;
+    background-color: $light-color;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    width: 90%;
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+}
+
+// Componentes comuns
+.section {
+    &__header {
+        text-align: center;
+        margin-bottom: $spacing-xxl;
+        position: relative;
+    }
+    
+    &__title {
+        font-size: $font-size-xxl;
+        color: $primary-color;
+        margin-bottom: $spacing-md;
+        
+        @include respond-to(md) {
+            font-size: 2rem;
+        }
+        
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -$spacing-md;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: $secondary-color;
+        }
+    }
+}
+
+.btn {
+    @include button;
+    
+    &--primary {
+        @include button($secondary-color, $text-light);
+    }
+    
+    &--outline {
+        @include button(transparent, $text-light);
+        border: 2px solid $text-light;
+        
+        &:hover {
+            background-color: $text-light;
+            color: $primary-color;
+        }
+    }
+}
+
+// Botão WhatsApp Flutuante
+.whatsapp-float {
+    position: fixed;
+    bottom: $spacing-xl;
+    right: $spacing-xl;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    color: $text-light;
+    border-radius: 50%;
+    @include center;
+    font-size: $font-size-xxl;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: $transition;
+    animation: pulse 2s infinite;
+    
+    &:hover {
+        transform: scale(1.1);
+        background-color: #128C7E;
+    }
+    
+    @include respond-to(sm) {
+        width: 50px;
+        height: 50px;
+        font-size: $font-size-xl;
+        bottom: $spacing-lg;
+        right: $spacing-lg;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}

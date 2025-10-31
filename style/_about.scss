@@ -1,0 +1,62 @@
+.about {
+    background-color: $text-light;
+    padding: $spacing-xxl 0;
+    
+    &__content {
+        @include flex(row, space-between, center);
+        gap: $spacing-xxl;
+        
+        @include respond-to(lg) {
+            flex-direction: column;
+        }
+    }
+    
+    &__image {
+        flex: 1;
+        border-radius: $border-radius;
+        overflow: hidden;
+        @include shadow;
+        
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: $transition;
+            
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+    }
+    
+    &__text {
+        flex: 1;
+    }
+    
+    &__subtitle {
+        font-size: $font-size-xl;
+        margin-bottom: $spacing-lg;
+        color: $primary-color;
+        @include fade-in;
+    }
+    
+    &__description {
+        margin-bottom: $spacing-lg;
+        @include fade-in(0.2s);
+    }
+}
+
+.skills {
+    @include flex(row, flex-start, center, wrap);
+    gap: $spacing-md;
+    margin-top: $spacing-xl;
+    
+    .skill {
+        background-color: $light-color;
+        padding: $spacing-xs $spacing-md;
+        border-radius: $border-radius-lg;
+        font-size: $font-size-sm;
+        font-weight: 600;
+        @include fade-in;
+    }
+}
