@@ -1,0 +1,82 @@
+.contact {
+    background-color: $text-light;
+    padding: $spacing-xxl 0;
+    
+    &__content {
+        @include flex(row, space-between, flex-start);
+        gap: $spacing-xxl;
+        
+        @include respond-to(lg) {
+            flex-direction: column;
+        }
+    }
+    
+    &__info {
+        flex: 1;
+    }
+    
+    &__form {
+        flex: 1;
+    }
+    
+    &__item {
+        @include flex(row, flex-start, center);
+        margin-bottom: $spacing-xl;
+        @include fade-in;
+    }
+    
+    &__icon {
+        width: 50px;
+        height: 50px;
+        background-color: $light-color;
+        border-radius: 50%;
+        @include center;
+        margin-right: $spacing-md;
+        color: $secondary-color;
+        font-size: $font-size-lg;
+    }
+    
+    &__subtitle {
+        font-size: $font-size-base;
+        margin-bottom: $spacing-xs;
+        color: $primary-color;
+    }
+    
+    &__text {
+        color: lighten($text-color, 20%);
+    }
+}
+
+.form {
+    &__group {
+        margin-bottom: $spacing-lg;
+        @include fade-in;
+    }
+    
+    &__label {
+        display: block;
+        margin-bottom: $spacing-sm;
+        font-weight: 600;
+        color: $primary-color;
+    }
+    
+    &__control {
+        width: 100%;
+        padding: $spacing-md;
+        border: 1px solid $border-color;
+        border-radius: $border-radius-sm;
+        font-family: $font-family;
+        transition: $transition;
+        
+        &:focus {
+            border-color: $secondary-color;
+            outline: none;
+            @include shadow;
+        }
+    }
+    
+    &__textarea {
+        min-height: 150px;
+        resize: vertical;
+    }
+}
